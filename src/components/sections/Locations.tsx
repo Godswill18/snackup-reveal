@@ -12,7 +12,7 @@ const LOCATIONS = [
 
 export function Locations() {
   return (
-    <section id="locations" className="relative py-32 md:py-40 px-6 md:px-10 overflow-hidden">
+    <section id="locations" className="relative py-16 sm:py-24 md:py-32 lg:py-40 px-5 sm:px-6 md:px-10 overflow-hidden">
       <div className="absolute inset-0 ambient-glow opacity-50" />
 
       <div className="relative max-w-7xl mx-auto">
@@ -21,10 +21,10 @@ export function Locations() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
           <span className="text-xs tracking-[0.4em] text-primary uppercase">Anywhere people gather</span>
-          <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl text-gradient">
+          <h2 className="mt-4 font-display font-bold text-3xl sm:text-4xl md:text-6xl text-gradient">
             Built for every space.
           </h2>
         </motion.div>

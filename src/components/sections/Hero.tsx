@@ -1,7 +1,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
-import vendingMachine from "@/assets/vending-machine.png";
+import heroMachine from "@/assets/Gemini_Generated_Image_7iu6jk7iu6jk7iu6.png";
 import { Particles } from "./Particles";
 
 export function Hero() {
@@ -28,20 +28,20 @@ export function Hero() {
       {/* Glow orb */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary/20 blur-[140px] pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pt-36 md:pt-44 pb-20 grid lg:grid-cols-2 gap-12 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 md:px-10 pt-28 sm:pt-36 md:pt-44 pb-16 sm:pb-20 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* Left copy */}
-        <div>
+        <div className="text-center lg:text-left">
           <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3 }}
-            className="inline-flex items-center gap-2 glass rounded-full px-3 py-1.5 text-xs text-muted-foreground mb-6"
+            className="inline-flex items-center gap-2 glass rounded-full px-3 py-1.5 text-xs text-muted-foreground mb-5 sm:mb-6"
           >
             <Sparkles className="w-3.5 h-3.5 text-primary" />
             <span>Next-gen automated retail</span>
           </motion.div>
 
-          <h1 className="font-display font-bold tracking-tight text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95]">
+          <h1 className="font-display font-bold tracking-tight text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95]">
             {["Reinventing", "Automated", "Retail."].map((word, i) => (
               <motion.span
                 key={word}
@@ -65,7 +65,7 @@ export function Hero() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.9 }}
-            className="mt-7 max-w-lg text-base md:text-lg text-muted-foreground leading-relaxed"
+            className="mt-5 sm:mt-7 max-w-lg mx-auto lg:mx-0 text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed"
           >
             SnackUP machines blend AI-driven inventory, contactless payments and cinematic
             design into the world's most intelligent vending experience.
@@ -75,18 +75,18 @@ export function Hero() {
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.05 }}
-            className="mt-9 flex flex-wrap gap-4"
+            className="mt-7 sm:mt-9 flex flex-wrap gap-3 sm:gap-4 justify-center lg:justify-start"
           >
             <a
               href="#contact"
-              className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-primary text-primary-foreground font-medium glow-orange hover:scale-[1.03] transition-transform"
+              className="group inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full bg-primary text-primary-foreground font-medium glow-orange hover:scale-[1.03] transition-transform text-sm sm:text-base"
             >
               Get a Machine
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
             <a
               href="#machine"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full glass-strong text-foreground hover:bg-white/10 transition-colors"
+              className="inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 rounded-full glass-strong text-foreground hover:bg-white/10 transition-colors text-sm sm:text-base"
             >
               Explore Technology
             </a>
@@ -96,7 +96,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 1.4 }}
-            className="mt-12 flex items-center gap-6 text-xs text-muted-foreground tracking-widest uppercase"
+            className="mt-8 sm:mt-12 flex items-center gap-4 sm:gap-6 text-xs text-muted-foreground tracking-widest uppercase justify-center lg:justify-start"
           >
             <span>— Snack More</span>
             <span className="text-primary">●</span>
@@ -105,18 +105,19 @@ export function Hero() {
         </div>
 
         {/* Right machine */}
-        <div className="relative h-[60vh] lg:h-[80vh] flex items-center justify-center [perspective:1500px]">
+        <div className="relative flex items-center justify-center perspective-[1500px]">
           <motion.div
             initial={{ scale: 0.6, opacity: 0, y: 60 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             transition={{ duration: 1.4, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             style={{ rotateX: rx, rotateY: ry, transformStyle: "preserve-3d" }}
-            className="relative w-full max-w-[480px] h-full"
+            className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
           >
             <img
-              src={vendingMachine}
+              src={heroMachine}
               alt="SnackUP smart vending machine"
-              className="relative w-full h-full object-contain"
+              className="w-full h-auto object-contain drop-shadow-2xl"
+              style={{ filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.35))" }}
             />
           </motion.div>
         </div>

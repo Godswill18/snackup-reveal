@@ -1,4 +1,5 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
+import { ThemeProvider } from "@/lib/use-theme";
 
 import appCss from "../styles.css?url";
 
@@ -29,20 +30,18 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "SnackUP Vending — Reinventing Automated Retail" },
+      { name: "description", content: "AI-powered smart vending machines with contactless payments, real-time telemetry and cinematic design. Snack More. Live More." },
+      { name: "author", content: "SnackUP Vending" },
+      { property: "og:title", content: "SnackUP Vending — The Future of Smart Vending" },
+      { property: "og:description", content: "Premium, AI-powered vending machines reimagined for offices, gyms, airports and more." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:site", content: "@SnackUPVending" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
     ],
   }),
   shellComponent: RootShell,
@@ -65,5 +64,9 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <ThemeProvider>
+      <Outlet />
+    </ThemeProvider>
+  );
 }

@@ -39,9 +39,9 @@ function CountUp({ to, suffix }: { to: number; suffix: string }) {
 
 export function Stats() {
   return (
-    <section className="relative py-32 md:py-40 px-6 md:px-10 overflow-hidden">
+    <section className="relative py-16 sm:py-24 md:py-32 lg:py-40 px-5 sm:px-6 md:px-10 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-30" />
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-primary/15 blur-[140px] rounded-full" />
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-175 h-75 bg-primary/15 blur-[140px] rounded-full" />
 
       <div className="relative max-w-7xl mx-auto">
         <motion.h2
@@ -49,7 +49,7 @@ export function Stats() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="text-center font-display font-bold text-4xl md:text-6xl text-gradient mb-20"
+          className="text-center font-display font-bold text-3xl sm:text-4xl md:text-6xl text-gradient mb-12 sm:mb-16 md:mb-20"
         >
           The numbers speak.
         </motion.h2>
@@ -64,7 +64,7 @@ export function Stats() {
               transition={{ duration: 0.7, delay: i * 0.1 }}
               className="text-center"
             >
-              <div className="font-display font-bold text-6xl md:text-7xl text-gradient leading-none">
+              <div className="font-display font-bold text-5xl sm:text-6xl md:text-7xl text-gradient leading-none">
                 <CountUp to={s.value} suffix={s.suffix} />
               </div>
               <p className="mt-4 text-sm text-muted-foreground tracking-wide">{s.label}</p>

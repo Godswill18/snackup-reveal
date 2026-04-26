@@ -12,7 +12,7 @@ const FEATURES = [
 
 export function Technology() {
   return (
-    <section id="technology" className="relative py-32 md:py-40 px-6 md:px-10 overflow-hidden">
+    <section id="technology" className="relative py-16 sm:py-24 md:py-32 lg:py-40 px-5 sm:px-6 md:px-10 overflow-hidden">
       <div className="absolute inset-0 grid-bg opacity-20" />
       <div className="absolute -top-40 left-1/4 w-[600px] h-[600px] rounded-full bg-primary/10 blur-[160px]" />
 
@@ -22,10 +22,10 @@ export function Technology() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="max-w-3xl mb-16"
+          className="max-w-3xl mb-10 sm:mb-16"
         >
           <span className="text-xs tracking-[0.4em] text-primary uppercase">Smart Technology</span>
-          <h2 className="mt-4 font-display font-bold text-4xl md:text-6xl text-gradient leading-tight">
+          <h2 className="mt-4 font-display font-bold text-3xl sm:text-4xl md:text-6xl text-gradient leading-tight">
             Intelligence built into every layer.
           </h2>
           <p className="mt-5 text-muted-foreground text-lg max-w-xl">
