@@ -186,15 +186,21 @@
 
   /* ---------- Cinematic image grading ---------- */
 
-  /* Wrapper that masks/vignettes the image into the scene */
+  /* Wrapper that masks/vignettes the image into the scene.
+     CSS vars are driven by GSAP ScrollTrigger for scroll-reactive blending. */
   .cine-frame {
     position: relative;
     isolation: isolate;
+    --cine-bloom: 1;        /* 0..1.4 bloom opacity */
+    --cine-vignette: 1;     /* 0..1.5 outer vignette darkness */
+    --cine-warm: 1;         /* 0..1.4 warm grade strength */
+    --cine-cool: 1;         /* 0..1.4 cool grade strength */
+    --cine-bright: 0.85;    /* image brightness */
+    --cine-contrast: 1.18;  /* image contrast */
   }
 
-  /* Base image grade marker (filter applied inline to combine with drop-shadow) */
   .cine-img {
-    /* filter set inline on the element so it can include drop-shadow */
+    /* filter set inline so it can include drop-shadow and read CSS vars */
   }
 
   /* Soft vignette mask fades the cream background into the dark scene */
@@ -203,7 +209,6 @@
     mask-image: radial-gradient(ellipse 70% 78% at 50% 50%, black 45%, rgba(0,0,0,0.55) 70%, transparent 92%);
   }
 
-  /* Orange color-grade wash, locked to the image silhouette via blend */
   .cine-grade-warm {
     position: absolute;
     inset: 0;
@@ -213,9 +218,9 @@
       radial-gradient(ellipse at 50% 90%, oklch(0.2 0.05 255 / 70%) 0%, transparent 60%);
     mix-blend-mode: color-dodge;
     z-index: 2;
+    opacity: var(--cine-warm);
   }
 
-  /* Cool teal shadow side for cinematic split-tone */
   .cine-grade-cool {
     position: absolute;
     inset: 0;
@@ -223,9 +228,9 @@
     background: linear-gradient(135deg, oklch(0.35 0.12 240 / 35%) 0%, transparent 55%);
     mix-blend-mode: soft-light;
     z-index: 2;
+    opacity: var(--cine-cool);
   }
 
-  /* Bloom — bright highlights bleed outward */
   .cine-bloom {
     position: absolute;
     inset: -10%;
@@ -234,15 +239,16 @@
     filter: blur(40px);
     mix-blend-mode: screen;
     z-index: 1;
+    opacity: var(--cine-bloom);
   }
 
-  /* Outer vignette darkens edges of the whole stage */
   .cine-stage-vignette {
     position: absolute;
     inset: 0;
     pointer-events: none;
     background: radial-gradient(ellipse 60% 70% at 50% 55%, transparent 40%, oklch(0.1 0.03 255 / 75%) 100%);
     z-index: 4;
+    opacity: var(--cine-vignette);
   }
 }
 
