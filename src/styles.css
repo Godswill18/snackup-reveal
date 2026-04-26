@@ -183,6 +183,72 @@
   .ambient-glow {
     background: radial-gradient(circle at 50% 50%, oklch(0.74 0.19 55 / 25%) 0%, transparent 60%);
   }
+
+  /* ---------- Cinematic image grading ---------- */
+
+  /* Wrapper that masks/vignettes the image into the scene */
+  .cine-frame {
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* Base image grade: crush whites, lift blacks toward navy, add warmth */
+  .cine-img {
+    filter:
+      brightness(0.82)
+      contrast(1.18)
+      saturate(1.15)
+      hue-rotate(-6deg);
+    mix-blend-mode: luminosity;
+  }
+
+  /* Soft vignette mask fades the cream background into the dark scene */
+  .cine-vignette {
+    -webkit-mask-image: radial-gradient(ellipse 70% 78% at 50% 50%, black 45%, rgba(0,0,0,0.55) 70%, transparent 92%);
+    mask-image: radial-gradient(ellipse 70% 78% at 50% 50%, black 45%, rgba(0,0,0,0.55) 70%, transparent 92%);
+  }
+
+  /* Orange color-grade wash, locked to the image silhouette via blend */
+  .cine-grade-warm {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 50% 30%, oklch(0.74 0.19 55 / 38%) 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 90%, oklch(0.2 0.05 255 / 70%) 0%, transparent 60%);
+    mix-blend-mode: color-dodge;
+    z-index: 2;
+  }
+
+  /* Cool teal shadow side for cinematic split-tone */
+  .cine-grade-cool {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg, oklch(0.35 0.12 240 / 35%) 0%, transparent 55%);
+    mix-blend-mode: soft-light;
+    z-index: 2;
+  }
+
+  /* Bloom — bright highlights bleed outward */
+  .cine-bloom {
+    position: absolute;
+    inset: -10%;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 50% 45%, oklch(0.85 0.18 60 / 35%) 0%, transparent 55%);
+    filter: blur(40px);
+    mix-blend-mode: screen;
+    z-index: 1;
+  }
+
+  /* Outer vignette darkens edges of the whole stage */
+  .cine-stage-vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse 60% 70% at 50% 55%, transparent 40%, oklch(0.1 0.03 255 / 75%) 100%);
+    z-index: 4;
+  }
 }
 
 @font-face {
