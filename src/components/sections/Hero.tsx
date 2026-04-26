@@ -197,36 +197,17 @@ export function Hero() {
         {/* Right machine */}
         <div className="relative h-[60vh] lg:h-[80vh] flex items-center justify-center [perspective:1500px]">
           <motion.div
-            ref={frameRef}
             initial={{ scale: 0.6, opacity: 0, y: 60 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             transition={{ duration: 1.4, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             style={{ rotateX: rx, rotateY: ry, transformStyle: "preserve-3d" }}
-            className="cine-frame relative w-full max-w-[480px] h-full"
+            className="relative w-full max-w-[480px] h-full"
           >
-            {/* Bloom halo behind the image */}
-            <div className="cine-bloom" />
-
-            {/* Soft floor reflection */}
-            <div className="absolute -bottom-10 left-1/2 -translate-x-1/2 w-[80%] h-16 bg-primary/40 blur-3xl rounded-full" />
-
-            {/* Image with vignette mask + color grading */}
-            <div className="relative w-full h-full cine-vignette">
-              <img
-                ref={imgRef}
-                src={vendingMachine}
-                alt="SnackUP smart vending machine"
-                className="cine-img relative w-full h-full object-contain"
-                style={{ filter: "brightness(0.85) contrast(1.18) saturate(1.15) hue-rotate(-6deg) drop-shadow(0 30px 60px rgba(255,138,0,0.3))" }}
-              />
-
-              {/* Color-grade washes */}
-              <div className="cine-grade-warm" />
-              <div className="cine-grade-cool" />
-            </div>
-
-            {/* Outer stage vignette */}
-            <div className="cine-stage-vignette" />
+            <img
+              src={vendingMachine}
+              alt="SnackUP smart vending machine"
+              className="relative w-full h-full object-contain"
+            />
           </motion.div>
         </div>
       </div>
