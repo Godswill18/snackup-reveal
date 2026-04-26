@@ -192,14 +192,9 @@
     isolation: isolate;
   }
 
-  /* Base image grade: crush whites, lift blacks toward navy, add warmth */
+  /* Base image grade marker (filter applied inline to combine with drop-shadow) */
   .cine-img {
-    filter:
-      brightness(0.82)
-      contrast(1.18)
-      saturate(1.15)
-      hue-rotate(-6deg);
-    mix-blend-mode: luminosity;
+    /* filter set inline on the element so it can include drop-shadow */
   }
 
   /* Soft vignette mask fades the cream background into the dark scene */
