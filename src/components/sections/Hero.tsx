@@ -1,10 +1,16 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import vendingMachine from "@/assets/vending-machine.png";
 import { Particles } from "./Particles";
 
 export function Hero() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const frameRef = useRef<HTMLDivElement | null>(null);
+  const imgRef = useRef<HTMLImageElement | null>(null);
+
   const mx = useMotionValue(0);
   const my = useMotionValue(0);
   const rx = useSpring(useTransform(my, [-0.5, 0.5], [8, -8]), { stiffness: 80, damping: 18 });
@@ -19,8 +25,92 @@ export function Hero() {
     return () => window.removeEventListener("mousemove", handler);
   }, [mx, my]);
 
+  // Scroll-driven cinematic grading: bloom + vignette intensity follow scroll
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    gsap.registerPlugin(ScrollTrigger);
+
+    const frame = frameRef.current;
+    const img = imgRef.current;
+    const section = sectionRef.current;
+    if (!frame || !img || !section) return;
+
+    const ctx = gsap.context(() => {
+      const state = {
+        bloom: 1,
+        vignette: 1,
+        warm: 1,
+        cool: 1,
+        bright: 0.85,
+        contrast: 1.18,
+        sat: 1.15,
+        hue: -6,
+      };
+
+      const apply = () => {
+        frame.style.setProperty("--cine-bloom", state.bloom.toFixed(3));
+        frame.style.setProperty("--cine-vignette", state.vignette.toFixed(3));
+        frame.style.setProperty("--cine-warm", state.warm.toFixed(3));
+        frame.style.setProperty("--cine-cool", state.cool.toFixed(3));
+        img.style.filter =
+          `brightness(${state.bright.toFixed(3)}) ` +
+          `contrast(${state.contrast.toFixed(3)}) ` +
+          `saturate(${state.sat.toFixed(3)}) ` +
+          `hue-rotate(${state.hue.toFixed(2)}deg) ` +
+          `drop-shadow(0 30px 60px rgba(255,138,0,0.3))`;
+      };
+      apply();
+
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: section,
+            start: "top top",
+            end: "bottom top",
+            scrub: 1.2,
+            invalidateOnRefresh: true,
+          },
+        })
+        // Phase 1: peak bloom + push warmth as user starts scrolling
+        .to(
+          state,
+          {
+            bloom: 1.4,
+            warm: 1.25,
+            cool: 0.85,
+            bright: 0.92,
+            contrast: 1.22,
+            sat: 1.25,
+            hue: -10,
+            ease: "sine.inOut",
+            onUpdate: apply,
+          },
+          0,
+        )
+        // Phase 2: dim bloom, deepen vignette so the image dissolves into the next section
+        .to(
+          state,
+          {
+            bloom: 0.25,
+            vignette: 1.6,
+            warm: 0.4,
+            cool: 1.2,
+            bright: 0.55,
+            contrast: 1.3,
+            sat: 0.75,
+            hue: 4,
+            ease: "power2.in",
+            onUpdate: apply,
+          },
+          ">",
+        );
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-hero grain">
+    <section ref={sectionRef} className="relative min-h-screen w-full overflow-hidden bg-hero grain">
       <div className="absolute inset-0 grid-bg opacity-60" />
       <div className="absolute inset-0 ambient-glow" />
       <Particles count={50} />
@@ -107,6 +197,7 @@ export function Hero() {
         {/* Right machine */}
         <div className="relative h-[60vh] lg:h-[80vh] flex items-center justify-center [perspective:1500px]">
           <motion.div
+            ref={frameRef}
             initial={{ scale: 0.6, opacity: 0, y: 60 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
             transition={{ duration: 1.4, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
@@ -122,11 +213,13 @@ export function Hero() {
             {/* Image with vignette mask + color grading */}
             <div className="relative w-full h-full cine-vignette">
               <img
+                ref={imgRef}
                 src={vendingMachine}
                 alt="SnackUP smart vending machine"
                 className="cine-img relative w-full h-full object-contain"
                 style={{ filter: "brightness(0.85) contrast(1.18) saturate(1.15) hue-rotate(-6deg) drop-shadow(0 30px 60px rgba(255,138,0,0.3))" }}
               />
+
               {/* Color-grade washes */}
               <div className="cine-grade-warm" />
               <div className="cine-grade-cool" />
