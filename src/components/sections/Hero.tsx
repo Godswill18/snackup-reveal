@@ -110,7 +110,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-hero grain">
+    <section ref={sectionRef} className="relative min-h-screen w-full overflow-hidden bg-hero grain">
       <div className="absolute inset-0 grid-bg opacity-60" />
       <div className="absolute inset-0 ambient-glow" />
       <Particles count={50} />
