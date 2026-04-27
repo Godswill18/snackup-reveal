@@ -41,9 +41,9 @@ function Index() {
         <MachineBreakdown />
       </LazySection>
 
-      <LazySection minHeight="60vh">
+      {/* <LazySection minHeight="60vh">
         <Technology />
-      </LazySection>
+      </LazySection> */}
 
       <LazySection minHeight="60vh">
         <Locations />

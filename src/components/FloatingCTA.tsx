@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Mail } from "lucide-react";
 
-const WHATSAPP_NUMBER = "2348000000000"; // ← replace with real number (digits only, no +)
+const WHATSAPP_NUMBER = "353899840454"; // ← replace with real number (digits only, no +)
 const EMAIL = "hello@snackup.vending";
 
 function WhatsAppIcon() {
