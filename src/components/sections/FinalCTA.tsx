@@ -252,7 +252,7 @@ export function FinalCTA() {
         transition={{ duration: 1.6, ease: [0.22, 1, 0.36, 1] }}
         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] max-w-sm md:max-w-lg pointer-events-none"
       >
-        <img src={vendingMachine} alt="" className="w-full" />
+        <img src={vendingMachine} alt="" className="w-full" loading="lazy" decoding="async" />
       </motion.div>
 
       <div className="relative z-10 max-w-6xl mx-auto">
@@ -337,8 +337,23 @@ export function FinalCTA() {
           </motion.div>
         </div>
 
-        <div className="mt-20 text-center text-[10px] tracking-[0.4em] text-muted-foreground">
-          SNACKUP VENDING • SNACK MORE • LIVE MORE
+        {/* Footer / Copyright */}
+        <div className="mt-20 border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-muted-foreground/60">
+          <p className="tracking-[0.3em] uppercase">
+            SNACKUP VENDING &bull; SNACK MORE &bull; LIVE MORE
+          </p>
+          <p className="text-center sm:text-right">
+            &copy; {new Date().getFullYear()} SnackUP Vending. All rights reserved.
+          </p>
+          <div className="flex items-center gap-4">
+            <a href="mailto:hello@snackup.vending" className="hover:text-muted-foreground transition-colors">
+              Privacy Policy
+            </a>
+            <span className="text-white/20">|</span>
+            <a href="mailto:hello@snackup.vending" className="hover:text-muted-foreground transition-colors">
+              Terms of Use
+            </a>
+          </div>
         </div>
       </div>
     </section>

@@ -1,7 +1,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
-import heroMachine from "@/assets/Gemini_Generated_Image_7iu6jk7iu6jk7iu6.png";
+import heroMachine from "@/assets/burst_snack.png";
 import { Particles } from "./Particles";
 
 export function Hero() {
@@ -67,8 +67,8 @@ export function Hero() {
             transition={{ duration: 0.8, delay: 0.9 }}
             className="mt-5 sm:mt-7 max-w-lg mx-auto lg:mx-0 text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed"
           >
-            SnackUP machines blend AI-driven inventory, contactless payments and cinematic
-            design into the world's most intelligent vending experience.
+            SnackUP Vending provides modern, fully managed vending solutions designed to keep people fuelled throughout the day. We supply and maintain high-quality vending machines 
+            stocked with a wide range of popular snacks and drinks, ensuring convenience wherever it’s needed.
           </motion.p>
 
           <motion.div
@@ -116,8 +116,13 @@ export function Hero() {
             <img
               src={heroMachine}
               alt="SnackUP smart vending machine"
-              className="w-full h-auto object-contain drop-shadow-2xl"
-              style={{ filter: "drop-shadow(0 40px 80px rgba(0,0,0,0.35))" }}
+              className="w-full h-auto object-contain"
+              style={{
+                maskImage: "radial-gradient(ellipse 78% 82% at 50% 50%, black 48%, transparent 88%)",
+                WebkitMaskImage: "radial-gradient(ellipse 78% 82% at 50% 50%, black 48%, transparent 88%)",
+              }}
+              loading="eager"
+              decoding="async"
             />
           </motion.div>
         </div>

@@ -6,7 +6,7 @@ const LOCATIONS = [
   { icon: Dumbbell, name: "Gyms", desc: "Healthy fuel, post-workout." },
   { icon: GraduationCap, name: "Universities", desc: "24/7 student-friendly access." },
   { icon: Plane, name: "Airports", desc: "Travel snacks, on-demand." },
-  { icon: Stethoscope, name: "Hospitals", desc: "Reliable around-the-clock service." },
+  // { icon: Stethoscope, name: "Hospitals", desc: "Reliable around-the-clock service." },
   { icon: Hotel, name: "Hotels", desc: "Elevated guest amenities." },
 ];
 

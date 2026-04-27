@@ -2,6 +2,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { useTheme } from "@/lib/use-theme";
+import snackupLogo from "@/assets/snackup_logo.png";
+import snackup_Dark from "@/assets/snackup_logo_dark_mode.png";
 
 const NAV_LINKS = [
   { href: "#technology", label: "Technology" },
@@ -24,13 +26,13 @@ export function Nav() {
       className="fixed top-0 inset-x-0 z-50 px-4 sm:px-6 md:px-10 pt-4 sm:pt-5"
     >
       <div className="mx-auto max-w-7xl glass-strong rounded-2xl px-4 sm:px-5 md:px-7 py-3 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#" className="flex items-center gap-2 font-display font-bold text-lg shrink-0">
-          <span className="text-foreground">Snack</span>
-          <span className="text-primary">UP</span>
-          <span className="hidden md:inline text-[10px] tracking-[0.3em] text-muted-foreground ml-1">
-            VENDING
-          </span>
+        {/* Logo — swaps based on active theme */}
+        <a href="#" className="flex items-center shrink-0">
+          <img
+            src={theme === "dark" ? snackup_Dark : snackupLogo}
+            alt="SnackUP Vending"
+            className="h-10 w-auto transition-opacity duration-300"
+          />
         </a>
 
         {/* Desktop nav */}

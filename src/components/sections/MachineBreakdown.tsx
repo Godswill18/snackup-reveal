@@ -103,7 +103,7 @@ function MachineBreakdownDesktop() {
       <div ref={partsRef} className="absolute inset-0 flex items-center justify-center perspective-[1800px]">
         <div ref={machineRef} className="relative w-80 md:w-105 z-10 transform-gpu">
           <div className="absolute -inset-10 bg-primary/30 blur-3xl rounded-full" />
-          <img src={vendingMachine} alt="SnackUP machine cross-section" className="relative w-full object-contain" />
+          <img src={vendingMachine} alt="SnackUP machine cross-section" className="relative w-full object-contain" loading="lazy" decoding="async" />
         </div>
 
         {PARTS.map((p, i) => (

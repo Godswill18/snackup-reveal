@@ -10,16 +10,15 @@ interface ThemeContextValue {
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  // Always start with "light" — matches the server render, avoids hydration mismatch.
-  const [theme, setTheme] = useState<Theme>("light");
+  // Default is dark. SPA (no SSR) so no hydration mismatch to worry about.
+  const [theme, setTheme] = useState<Theme>("dark");
 
-  // After hydration, restore the saved preference (no second effect stomping on this).
+  // On mount, restore any saved preference; otherwise apply the dark default.
   useEffect(() => {
     const saved = localStorage.getItem("theme") as Theme | null;
-    if (saved === "dark") {
-      document.documentElement.classList.add("dark");
-      setTheme("dark");
-    }
+    const initial = saved ?? "dark";
+    document.documentElement.classList.toggle("dark", initial === "dark");
+    setTheme(initial);
   }, []);
 
   function toggleTheme() {
