@@ -47,7 +47,7 @@ export function Hero() {
                 key={word}
                 initial={{ y: 60, opacity: 0, filter: "blur(20px)" }}
                 animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-                transition={{ duration: 1, delay: 0.4 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 1, delay: 1.5 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
                 className="block text-gradient"
               >
                 {i === 2 ? (
