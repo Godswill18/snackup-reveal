@@ -42,7 +42,7 @@ export function Hero() {
           </motion.div> */}
 
           <h1 className="font-display font-bold tracking-tight text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95]">
-            {["Wellcome ", "To", "SnackUP Vending."].map((word, i) => (
+            {["Welcome ", "To", "SnackUP Vending."].map((word, i) => (
               <motion.span
                 key={word}
                 initial={{ y: 60, opacity: 0, filter: "blur(20px)" }}

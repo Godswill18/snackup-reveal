@@ -302,8 +302,8 @@ export function FinalCTA() {
               className="mt-8 flex flex-col gap-3 items-center lg:items-start text-sm text-muted-foreground"
             >
               {[
-                { label: "Email", value: "hello@snackup.vending" },
-                { label: "Sales", value: "sales@snackup.vending" },
+                { label: "Email", value: "Info@snackupvending.com" },
+                // { label: "Sales", value: "sales@snackup.vending" },
               ].map(({ label, value }) => (
                 <div key={label} className="flex items-center gap-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary" />
@@ -346,11 +346,11 @@ export function FinalCTA() {
             &copy; {new Date().getFullYear()} SnackUP Vending. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            <a href="mailto:hello@snackup.vending" className="hover:text-muted-foreground transition-colors">
+            <a href="mailto:Info@snackupvending.com" className="hover:text-muted-foreground transition-colors">
               Privacy Policy
             </a>
             <span className="text-white/20">|</span>
-            <a href="mailto:hello@snackup.vending" className="hover:text-muted-foreground transition-colors">
+            <a href="mailto:Info@snackupvending.com" className="hover:text-muted-foreground transition-colors">
               Terms of Use
             </a>
           </div>
