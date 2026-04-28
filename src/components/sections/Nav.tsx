@@ -6,7 +6,7 @@ import snackupLogo from "@/assets/snackup_logo.png";
 import snackup_Dark from "@/assets/snackup_logo_dark_mode.png";
 
 const NAV_LINKS = [
-  { href: "#technology", label: "Technology" },
+  // { href: "#technology", label: "Technology" },
   { href: "#machine", label: "Machine" },
   { href: "#locations", label: "Locations" },
   { href: "#contact", label: "Contact" },
@@ -54,12 +54,12 @@ export function Nav() {
             {theme === "light" ? <Moon size={16} /> : <Sun size={16} />}
           </button>
 
-          <a
+          {/* <a
             href="#contact"
             className="hidden md:inline-flex text-sm font-medium px-4 py-2 rounded-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
           >
             Book a Demo
-          </a>
+          </a> */}
 
           {/* Hamburger — mobile only */}
           <button
