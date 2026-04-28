@@ -31,7 +31,7 @@ export function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 md:px-10 pt-28 sm:pt-36 md:pt-44 pb-16 sm:pb-20 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
         {/* Left copy */}
         <div className="text-center lg:text-left">
-          <motion.div
+          {/* <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.7, delay: 0.3 }}
@@ -39,10 +39,10 @@ export function Hero() {
           >
             <Sparkles className="w-3.5 h-3.5 text-primary" />
             <span>Next-gen automated retail</span>
-          </motion.div>
+          </motion.div> */}
 
           <h1 className="font-display font-bold tracking-tight text-4xl sm:text-5xl md:text-7xl lg:text-[5.5rem] leading-[0.95]">
-            {["Reinventing", "Automated", "Retail."].map((word, i) => (
+            {["Wellcome ", "To", "SnackUP Vending."].map((word, i) => (
               <motion.span
                 key={word}
                 initial={{ y: 60, opacity: 0, filter: "blur(20px)" }}
@@ -52,7 +52,7 @@ export function Hero() {
               >
                 {i === 2 ? (
                   <>
-                    Retail<span className="text-primary">.</span>
+                   SnackUP Vending<span className="text-primary">.</span>
                   </>
                 ) : (
                   word
@@ -71,7 +71,7 @@ export function Hero() {
             stocked with a wide range of popular snacks and drinks, ensuring convenience wherever it’s needed.
           </motion.p>
 
-          <motion.div
+          {/* <motion.div
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.05 }}
@@ -90,7 +90,7 @@ export function Hero() {
             >
               Explore Technology
             </a>
-          </motion.div>
+          </motion.div> */}
 
           <motion.div
             initial={{ opacity: 0 }}

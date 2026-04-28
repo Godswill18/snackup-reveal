@@ -340,7 +340,7 @@ export function FinalCTA() {
         {/* Footer / Copyright */}
         <div className="mt-20 border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-muted-foreground/60">
           <p className="tracking-[0.3em] uppercase">
-            SNACKUP VENDING &bull; SNACK MORE &bull; LIVE MORE
+            SNACKUP VENDING &bull; <br /> SNACK MORE &bull; LIVE MORE
           </p>
           <p className="text-center sm:text-right">
             &copy; {new Date().getFullYear()} SnackUP Vending. All rights reserved.

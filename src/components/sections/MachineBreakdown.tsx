@@ -6,12 +6,12 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import vendingMachine from "@/assets/vending-machine.png";
 
 const PARTS = [
-  { id: "glass", label: "Front Glass", desc: "Anti-glare reinforced display panel.", x: -340, y: -200, rot: -12 },
-  { id: "payment", label: "Smart Payment Terminal", desc: "Contactless, NFC & QR-ready.", x: 340, y: -160, rot: 10 },
-  { id: "cooling", label: "Cooling Unit", desc: "Adaptive low-energy refrigeration.", x: -380, y: 80, rot: 8 },
-  { id: "trays", label: "Snack Trays", desc: "Modular shelves with weight sensors.", x: 360, y: 60, rot: -8 },
-  { id: "led", label: "LED Lighting Strips", desc: "Cinematic ambient interior glow.", x: -300, y: 260, rot: -6 },
-  { id: "qr", label: "QR Support Module", desc: "Instant scan-to-buy from any phone.", x: 320, y: 280, rot: 12 },
+  { id: "glass", label: "Crystal Display Panel", desc: "Anti-glare view of every snack and drink — clear, inviting, and always on show.", x: -340, y: -200, rot: -12 },
+  { id: "payment", label: "Contactless Payment Hub", desc: "Tap, swipe, or scan — pay in seconds with card, phone, or QR. No cash needed.", x: 340, y: -160, rot: 10 },
+  { id: "cooling", label: "Precision Cooling System", desc: "Keeps drinks ice-cold and fresh snacks at their best, 24 hours a day.", x: -380, y: 80, rot: 8 },
+  { id: "trays", label: "Fully Managed Stock Shelves", desc: "Our team keeps every tray loaded with popular snacks and drinks — restocked before you run low.", x: 360, y: 60, rot: -8 },
+  { id: "led", label: "Ambient LED Lighting", desc: "Eye-catching interior glow that showcases every product and keeps the machine looking premium.", x: -300, y: 260, rot: -6 },
+  { id: "qr", label: "QR & NFC Pay Module", desc: "Scan from any smartphone — quick, contact-free, and no app download required.", x: 320, y: 280, rot: 12 },
 ];
 
 function PartCard({ p, i }: { p: typeof PARTS[0]; i: number }) {

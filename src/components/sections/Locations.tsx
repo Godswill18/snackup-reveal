@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import { Building2, Dumbbell, GraduationCap, Plane, Stethoscope, Hotel } from "lucide-react";
+import { Building2, Dumbbell, GraduationCap, Warehouse, Hotel } from "lucide-react";
 
 const LOCATIONS = [
   { icon: Building2, name: "Offices", desc: "Premium break-room experiences." },
   { icon: Dumbbell, name: "Gyms", desc: "Healthy fuel, post-workout." },
-  { icon: GraduationCap, name: "Universities", desc: "24/7 student-friendly access." },
-  { icon: Plane, name: "Airports", desc: "Travel snacks, on-demand." },
+  { icon: GraduationCap, name: "Schools", desc: "24/7 student-friendly access." },
+  { icon: Warehouse, name: "Warehouses", desc: "Fuel for shift workers, around the clock." },
   // { icon: Stethoscope, name: "Hospitals", desc: "Reliable around-the-clock service." },
   { icon: Hotel, name: "Hotels", desc: "Elevated guest amenities." },
 ];
@@ -23,7 +23,7 @@ export function Locations() {
           transition={{ duration: 0.8 }}
           className="text-center mb-10 sm:mb-16"
         >
-          <span className="text-xs tracking-[0.4em] text-primary uppercase">Anywhere people gather</span>
+          <span className="text-xs tracking-[0.4em] text-primary uppercase">SnackUp Vending is</span>
           <h2 className="mt-4 font-display font-bold text-3xl sm:text-4xl md:text-6xl text-gradient">
             Built for every space.
           </h2>
