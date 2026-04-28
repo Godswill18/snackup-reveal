@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Mail } from "lucide-react";
 
 const WHATSAPP_NUMBER = "353899840454"; // ← replace with real number (digits only, no +)
-const EMAIL = "hello@snackup.vending";
+const EMAIL = "Info@snackupvending.com";
 
 function WhatsAppIcon() {
   return (
