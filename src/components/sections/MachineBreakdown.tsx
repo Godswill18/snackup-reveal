@@ -3,7 +3,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { motion } from "framer-motion";
 import { useIsMobile } from "@/hooks/use-mobile";
-import vendingMachine from "@/assets/vending-machine.png";
+import vendingMachine from "@/assets/vending-machine.webp";
 
 const PARTS = [
   { id: "glass", label: "Crystal Display Panel", desc: "Anti-glare view of every snack and drink — clear, inviting, and always on show.", x: -340, y: -200, rot: -12 },

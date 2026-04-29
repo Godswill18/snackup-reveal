@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
-import vendingMachine from "@/assets/vending-machine.png";
+import vendingMachine from "@/assets/vending-machine.webp";
 
 const LOCATION_TYPES = [
   "Office / Corporate",

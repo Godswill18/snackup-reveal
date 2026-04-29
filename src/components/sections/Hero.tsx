@@ -1,7 +1,7 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect } from "react";
 import { ArrowRight, Sparkles } from "lucide-react";
-import heroMachine from "@/assets/burst_snack.png";
+import heroMachine from "@/assets/burst_snack.webp";
 import { Particles } from "./Particles";
 
 export function Hero() {
