@@ -19,6 +19,22 @@ export function Nav() {
   const close = () => setOpen(false);
 
   return (
+    <>
+    {/* Tap-away backdrop — dims hero when mobile menu is open */}
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          key="backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          className="fixed inset-0 z-40 bg-black/60 md:hidden"
+          onClick={close}
+        />
+      )}
+    </AnimatePresence>
+
     <motion.header
       initial={{ y: -30, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
@@ -81,7 +97,7 @@ export function Nav() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.97 }}
             transition={{ duration: 0.2 }}
-            className="md:hidden mx-auto max-w-7xl mt-2 glass-strong rounded-2xl px-5 py-5 flex flex-col gap-1"
+            className="md:hidden mx-auto max-w-7xl mt-2 bg-background border border-border/40 rounded-2xl px-5 py-5 flex flex-col gap-1 shadow-2xl"
           >
             {NAV_LINKS.map((l) => (
               <a
@@ -93,16 +109,17 @@ export function Nav() {
                 {l.label}
               </a>
             ))}
-            <a
+            {/* <a
               href="#contact"
               onClick={close}
               className="mt-3 text-center text-sm font-medium px-4 py-3 rounded-full bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
             >
               Book a Demo
-            </a>
+            </a> */}
           </motion.div>
         )}
       </AnimatePresence>
     </motion.header>
+    </>
   );
 }
