@@ -1,6 +1,16 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 
 export function Particles({ count = 40 }: { count?: number }) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    if ("requestIdleCallback" in window) {
+      const id = requestIdleCallback(() => setMounted(true), { timeout: 2000 });
+      return () => cancelIdleCallback(id);
+    }
+    const id = setTimeout(() => setMounted(true), 1500);
+    return () => clearTimeout(id);
+  }, []);
+
   const particles = useMemo(
     () =>
       Array.from({ length: count }).map((_, i) => ({
@@ -14,6 +24,8 @@ export function Particles({ count = 40 }: { count?: number }) {
       })),
     [count],
   );
+
+  if (!mounted) return null;
 
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">

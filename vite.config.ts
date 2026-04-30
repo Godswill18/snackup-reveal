@@ -11,4 +11,18 @@ export default defineConfig({
     tailwindcss(),
     tsconfigPaths(),
   ],
+  build: {
+    target: "esnext",
+    cssMinify: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "vendor-react": ["react", "react-dom"],
+          "vendor-router": ["@tanstack/react-router"],
+          "vendor-motion": ["framer-motion"],
+          "vendor-gsap": ["gsap"],
+        },
+      },
+    },
+  },
 });

@@ -1,8 +1,8 @@
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { useEffect } from "react";
-import { ArrowRight, Sparkles } from "lucide-react";
-import heroMachine from "@/assets/burst_snack.webp";
 import { Particles } from "./Particles";
+
+const heroMachine = "/burst_snack.webp";
 
 export function Hero() {
   const mx = useMotionValue(0);
@@ -23,7 +23,7 @@ export function Hero() {
     <section className="relative min-h-screen w-full overflow-hidden bg-hero grain">
       <div className="absolute inset-0 grid-bg opacity-60" />
       <div className="absolute inset-0 ambient-glow" />
-      <Particles count={50} />
+      <Particles count={25} />
 
       {/* Glow orb */}
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-primary/20 blur-[140px] pointer-events-none" />
@@ -45,7 +45,7 @@ export function Hero() {
             {["Welcome ", "To", "SnackUP Vending."].map((word, i) => (
               <motion.span
                 key={word}
-                initial={{ y: 60, opacity: 0, filter: "blur(20px)" }}
+                initial={{ y: 40, opacity: 0, filter: "blur(12px)" }}
                 animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
                 transition={{ duration: 1, delay: 1.5 + i * 0.12, ease: [0.22, 1, 0.36, 1] }}
                 className="block text-gradient"
@@ -64,7 +64,7 @@ export function Hero() {
           <motion.p
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
+            transition={{ duration: 0.7, delay: 0.5 }}
             className="mt-5 sm:mt-7 max-w-lg mx-auto lg:mx-0 text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed"
           >
             SnackUP Vending provides modern, fully managed vending solutions designed to keep people fuelled throughout the day. We supply and maintain high-quality vending machines 
@@ -95,7 +95,7 @@ export function Hero() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 1.4 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
             className="mt-8 sm:mt-12 flex items-center gap-4 sm:gap-6 text-xs text-muted-foreground tracking-widest uppercase justify-center lg:justify-start"
           >
             <span>— Snack More</span>
@@ -107,22 +107,25 @@ export function Hero() {
         {/* Right machine */}
         <div className="relative flex items-center justify-center perspective-[1500px]">
           <motion.div
-            initial={{ scale: 0.6, opacity: 0, y: 60 }}
+            initial={{ scale: 0.85, opacity: 0, y: 30 }}
             animate={{ scale: 1, opacity: 1, y: 0 }}
-            transition={{ duration: 1.4, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             style={{ rotateX: rx, rotateY: ry, transformStyle: "preserve-3d" }}
             className="relative w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg"
           >
             <img
               src={heroMachine}
               alt="SnackUP smart vending machine"
+              width={800}
+              height={800}
               className="w-full h-auto object-contain"
               style={{
                 maskImage: "radial-gradient(ellipse 78% 82% at 50% 50%, black 48%, transparent 88%)",
                 WebkitMaskImage: "radial-gradient(ellipse 78% 82% at 50% 50%, black 48%, transparent 88%)",
               }}
               loading="eager"
-              decoding="async"
+              decoding="sync"
+              fetchPriority="high"
             />
           </motion.div>
         </div>
