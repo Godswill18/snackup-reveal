@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { useTheme } from "@/lib/use-theme";
+import { scrollToSection } from "@/lib/use-lenis";
 import snackupLogo from "@/assets/snackup_logo.webp";
 import snackup_Dark from "@/assets/snackup_logo_dark_mode.webp";
 
@@ -54,7 +55,12 @@ export function Nav() {
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
           {NAV_LINKS.map((l) => (
-            <a key={l.href} href={l.href} className="hover:text-foreground transition-colors">
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={(e) => { e.preventDefault(); scrollToSection(l.href); }}
+              className="hover:text-foreground transition-colors cursor-pointer"
+            >
               {l.label}
             </a>
           ))}
@@ -103,8 +109,8 @@ export function Nav() {
               <a
                 key={l.href}
                 href={l.href}
-                onClick={close}
-                className="text-base text-muted-foreground hover:text-foreground transition-colors py-2.5 border-b border-border last:border-0"
+                onClick={(e) => { e.preventDefault(); scrollToSection(l.href); close(); }}
+                className="text-base text-muted-foreground hover:text-foreground transition-colors py-2.5 border-b border-border last:border-0 cursor-pointer"
               >
                 {l.label}
               </a>

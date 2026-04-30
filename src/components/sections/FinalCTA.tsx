@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, CheckCircle2, Loader2 } from "lucide-react";
+import { ArrowRight, CheckCircle2, Loader2, MapPin } from "lucide-react";
 import vendingMachine from "@/assets/vending-machine.webp";
 
 const LOCATION_TYPES = [
@@ -267,7 +267,7 @@ export function FinalCTA() {
               transition={{ duration: 0.6 }}
               className="text-xs tracking-[0.4em] text-primary uppercase"
             >
-              The Future Starts Here
+              Serving Ireland
             </motion.span>
 
             <motion.h2
@@ -289,9 +289,9 @@ export function FinalCTA() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="mt-5 text-sm sm:text-base text-muted-foreground leading-relaxed max-w-md mx-auto lg:mx-0"
             >
-              Deploy a SnackUP machine in your space and turn every break into
-              a premium experience. Fill in the form and we'll be in touch
-              within one business day.
+              Deploy a SnackUP machine anywhere across Ireland and turn every
+              break into a premium experience. Fill in the form and we'll be
+              in touch within one business day.
             </motion.p>
 
             <motion.div
@@ -301,21 +301,23 @@ export function FinalCTA() {
               transition={{ duration: 0.8, delay: 0.55 }}
               className="mt-8 flex flex-col gap-3 items-center lg:items-start text-sm text-muted-foreground"
             >
-              {[
-                { label: "Email", value: "Info@snackupvending.com" },
-                // { label: "Sales", value: "sales@snackup.vending" },
-              ].map(({ label, value }) => (
-                <div key={label} className="flex items-center gap-3">
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                  <span className="text-muted-foreground/70">{label}:</span>
-                  <a
-                    href={`mailto:${value}`}
-                    className="text-foreground hover:text-primary transition-colors"
-                  >
-                    {value}
-                  </a>
-                </div>
-              ))}
+              {/* Location */}
+              <div className="flex items-center gap-3">
+                <MapPin className="w-4 h-4 text-primary shrink-0" />
+                <span className="text-foreground">Ireland</span>
+              </div>
+
+              {/* Email */}
+              <div className="flex items-center gap-3">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                <span className="text-muted-foreground/70">Email:</span>
+                <a
+                  href="mailto:Info@snackupvending.com"
+                  className="text-foreground hover:text-primary transition-colors"
+                >
+                  Info@snackupvending.com
+                </a>
+              </div>
             </motion.div>
           </div>
 
