@@ -2,8 +2,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { useTheme } from "@/lib/use-theme";
-import snackupLogo from "@/assets/snackup_logo.png";
-import snackup_Dark from "@/assets/snackup_logo_dark_mode.png";
+import snackupLogo from "@/assets/snackup_logo.webp";
+import snackup_Dark from "@/assets/snackup_logo_dark_mode.webp";
 
 const NAV_LINKS = [
   // { href: "#technology", label: "Technology" },
