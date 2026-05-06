@@ -3,7 +3,11 @@
     "allow": [
       "Bash(npx tsc *)",
       "WebFetch(domain:pagespeed.web.dev)",
-      "WebFetch(domain:www.googleapis.com)"
+      "WebFetch(domain:www.googleapis.com)",
+      "Bash(npm install *)",
+      "Bash(npm uninstall *)",
+      "Bash(rm \"c:/Users/User/OneDrive/Documents/snackup-reveal/api/contact.ts\")",
+      "Bash(rmdir \"c:/Users/User/OneDrive/Documents/snackup-reveal/api\")"
     ]
   }
 }

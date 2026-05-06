@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, CheckCircle2, Loader2, MapPin } from "lucide-react";
+import emailjs from "@emailjs/browser";
+import ReCAPTCHA from "react-google-recaptcha";
+import { useTheme } from "@/lib/use-theme";
 import vendingMachine from "@/assets/vending-machine.webp";
 
 const LOCATION_TYPES = [
@@ -36,6 +39,9 @@ function ContactForm() {
   const [form, setForm] = useState<FormState>(EMPTY);
   const [errors, setErrors] = useState<Partial<FormState>>({});
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [captchaToken, setCaptchaToken] = useState<string | null>(null);
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+  const { theme } = useTheme();
 
   function set(field: keyof FormState, value: string) {
     setForm((prev) => ({ ...prev, [field]: value }));
@@ -54,12 +60,38 @@ function ContactForm() {
     return Object.keys(next).length === 0;
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (!validate()) return;
+    if (!captchaToken) {
+      setErrors({ message: "Please complete the reCAPTCHA." });
+      return;
+    }
     setStatus("sending");
-    // Simulate async submission
-    setTimeout(() => setStatus("sent"), 1800);
+
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        {
+          from_name: form.name,
+          company: form.company,
+          from_email: form.email,
+          phone: form.phone || "—",
+          location_type: form.locationType,
+          message: form.message || "—",
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      );
+      setStatus("sent");
+      recaptchaRef.current?.reset();
+      setCaptchaToken(null);
+    } catch {
+      setStatus("idle");
+      recaptchaRef.current?.reset();
+      setCaptchaToken(null);
+      setErrors({ message: "Something went wrong. Please try again or email us directly." });
+    }
   }
 
   if (status === "sent") {
@@ -158,9 +190,20 @@ function ContactForm() {
         />
       </Field>
 
+      {/* reCAPTCHA */}
+      <div className="flex justify-center">
+        <ReCAPTCHA
+          ref={recaptchaRef}
+          sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+          theme={theme === "dark" ? "dark" : "light"}
+          onChange={(token) => setCaptchaToken(token)}
+          onExpired={() => setCaptchaToken(null)}
+        />
+      </div>
+
       <button
         type="submit"
-        disabled={status === "sending"}
+        disabled={status === "sending" || !captchaToken}
         className="w-full group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full bg-primary text-primary-foreground font-medium glow-orange hover:scale-[1.02] active:scale-[0.98] transition-transform disabled:opacity-70 disabled:cursor-not-allowed disabled:scale-100"
       >
         {status === "sending" ? (
@@ -312,10 +355,10 @@ export function FinalCTA() {
                 <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
                 <span className="text-muted-foreground/70">Email:</span>
                 <a
-                  href="mailto:Info@snackupvending.com"
+                  href="mailto:Info.SnackUPVending@gmail.com"
                   className="text-foreground hover:text-primary transition-colors"
                 >
-                  Info@snackupvending.com
+                  Info.SnackUPVending@gmail.com
                 </a>
               </div>
             </motion.div>
@@ -348,11 +391,11 @@ export function FinalCTA() {
             &copy; {new Date().getFullYear()} SnackUP Vending. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            <a href="mailto:Info@snackupvending.com" className="hover:text-muted-foreground transition-colors">
+            <a href="mailto:Info.SnackUPVending@gmail.com" className="hover:text-muted-foreground transition-colors">
               Privacy Policy
             </a>
             <span className="text-white/20">|</span>
-            <a href="mailto:Info@snackupvending.com" className="hover:text-muted-foreground transition-colors">
+            <a href="mailto:Info.SnackUPVending@gmail.com" className="hover:text-muted-foreground transition-colors">
               Terms of Use
             </a>
           </div>
