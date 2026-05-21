@@ -74,9 +74,9 @@ function ContactForm() {
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         {
-          user_name: form.name,
+          full_name: form.name,
           company: form.company,
-          user_email: form.email,
+          email: form.email,
           phone: form.phone || "—",
           location_type: form.locationType,
           message: form.message || "—",
