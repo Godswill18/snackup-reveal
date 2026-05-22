@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef, useState } from "react";
+import { Component, Suspense, useEffect, useRef, useState } from "react";
 
 function Skeleton({ minHeight }: { minHeight: string }) {
   return (
@@ -9,6 +9,30 @@ function Skeleton({ minHeight }: { minHeight: string }) {
       <div className="w-6 h-6 rounded-full border-2 border-primary/30 border-t-primary animate-spin" />
     </div>
   );
+}
+
+class SectionErrorBoundary extends Component<
+  { children: React.ReactNode },
+  { hasError: boolean }
+> {
+  state = { hasError: false };
+  static getDerivedStateFromError() { return { hasError: true }; }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="w-full flex flex-col items-center justify-center gap-3 py-16 text-center">
+          <p className="text-sm text-muted-foreground">Failed to load this section.</p>
+          <button
+            onClick={() => window.location.reload()}
+            className="text-xs text-primary hover:underline"
+          >
+            Reload page
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
 }
 
 interface LazySectionProps {
@@ -47,9 +71,11 @@ export function LazySection({ children, minHeight = "50vh" }: LazySectionProps) 
   return (
     <div ref={ref}>
       {mounted ? (
-        <Suspense fallback={<Skeleton minHeight={minHeight} />}>
-          {children}
-        </Suspense>
+        <SectionErrorBoundary>
+          <Suspense fallback={<Skeleton minHeight={minHeight} />}>
+            {children}
+          </Suspense>
+        </SectionErrorBoundary>
       ) : (
         <Skeleton minHeight={minHeight} />
       )}
